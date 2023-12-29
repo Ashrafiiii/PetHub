@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.post {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
