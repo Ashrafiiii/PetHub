@@ -133,7 +133,7 @@ if ($postResult) {
         echo "<p class='card-text'>{$post['caption']}</p>";
 
         // Add Like and Comment Count
-        echo "<p>Likes: {$post['like_count']} | Comments: {$post['comment_count']}</p>";
+        //echo "<p>Likes: {$post['like_count']} | Comments: {$post['comment_count']}</p>";
 
         // Add Edit Link
         echo "<a href='edit_post.php?po_id={$post['po_id']}' class='btn btn-primary'>Edit</a>";
@@ -146,12 +146,16 @@ if ($postResult) {
         echo "</form>";
 
         // Display comments after each post
-        $commentQuery = "SELECT * FROM comments WHERE po_id = '{$post['po_id']}'";
-        $commentResult = mysqli_query($con, $commentQuery);
+        $commentQuery = "SELECT comments.*, users.f_name
+        FROM comments
+        JOIN users ON comments.u_id = users.u_id
+        WHERE po_id = '{$post['po_id']}'";
 
-        while ($comment = mysqli_fetch_assoc($commentResult)) {
-            echo "<p>{$comment['user_name']}: {$comment['comment']}</p>";
-        }
+$commentResult = mysqli_query($con, $commentQuery);
+
+while ($comment = mysqli_fetch_assoc($commentResult)) {
+echo "<p>{$comment['f_name']}: {$comment['comment']}</p>";
+}
 
         echo "</div>";
         echo "</div>";
