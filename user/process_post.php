@@ -21,10 +21,10 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     exit();
 }
 
-$caption = $_POST['caption'];
+$caption = mysqli_real_escape_string($con, $_POST['caption']); // Sanitize input
 
-// Rest of your existing code for file upload
-
+// File Upload
+$allowedTypes = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'avi', 'mkv']; // Add allowed file types
 $extension = pathinfo($_FILES['photo_video']['name'], PATHINFO_EXTENSION);
 $unique_name = uniqid() . '.' . $extension;
 $folder = "uploads/" . $unique_name;
@@ -33,7 +33,7 @@ if (!file_exists('uploads')) {
     mkdir('uploads', 0755, true);
 }
 
-if (move_uploaded_file($_FILES['photo_video']['tmp_name'], $folder)) {
+if (in_array($extension, $allowedTypes) && move_uploaded_file($_FILES['photo_video']['tmp_name'], $folder)) {
     // Insert post with user ID
     $q = "INSERT INTO post (u_id, photo_video, caption) VALUES ('$user_id', '$folder', '$caption')";
 
@@ -44,6 +44,6 @@ if (move_uploaded_file($_FILES['photo_video']['tmp_name'], $folder)) {
         echo "Error: " . $q . "<br>" . mysqli_error($con);
     }
 } else {
-    echo "Error moving uploaded file.";
+    echo "Error uploading file or invalid file type.";
 }
 ?>
