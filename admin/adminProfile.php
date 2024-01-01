@@ -61,8 +61,10 @@
                     echo '<td>' . $vet['f_name'] . '</td>';
                     echo '<td>' . $vet['l_name'] . '</td>';
                     echo '<td>
-                            <a href="approve_vet.php?v_id=' . urlencode($vet['vet_id']) . '" class="btn btn-success btn-approve">Approve</a>
-                            <a href="reject_vet.php?v_id=' . urlencode($vet['vet_id']) . '" class="btn btn-danger btn-reject">Reject</a>
+                    <a href="approve_vet.php?vet_id=' . urlencode($vet['vet_id']) . '" class="btn btn-success btn-approve">Approve</a>
+                    <a href="reject_vet.php?vet_id=' . urlencode($vet['vet_id']) . '" class="btn btn-danger btn-reject">Reject</a>
+                    
+                    
                           </td>';
 
                 }
