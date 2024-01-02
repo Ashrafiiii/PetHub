@@ -34,6 +34,7 @@ if (isset($_POST['register'])) {
 
     move_uploaded_file($_FILES['profile_picture']['tmp_name'], $folder);
 
+    // Insert pet information into the pets table
     $q1 = "INSERT INTO pets(u_id, name, gender, species, breed, adopted_status, weight, medical_history, age, vaccination_status, profile_picture) 
            VALUES ('$u_id', '$name', '$gender', '$species', '$breed', '$adopted_status', '$weight', '$med_history', '$age', '$vaccine_status', '$unique_name')";
 
@@ -43,6 +44,15 @@ if (isset($_POST['register'])) {
 
         // Store the pet ID in the session
         $_SESSION['p_id'] = $p_id;
+
+        // Update the users table with the pet ID
+        $updateUserQuery = "UPDATE users SET pet_id = '$p_id' WHERE u_id = '$u_id'";
+        $updateUserResult = mysqli_query($con, $updateUserQuery);
+
+        if (!$updateUserResult) {
+            echo "Error updating user information: " . mysqli_error($con);
+            exit;
+        }
 
         // Redirect to the profile page
         header("location: ProfilePet.php");

@@ -59,7 +59,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                     </lable>
                     <img src="<?php echo $profile_picture; ?>" alt="Profile Picture" class="rounded-circle img-fluid">
                     <h1 class="mt-3"><?php echo $name; ?></h1>
-                    <p><?php echo $gender; ?>&nbsp <?php echo "(". $age. ")" ?> </p>
+                    <p><?php echo $gender; ?><?php echo ",".$age ?> </p>
 
                 </div>
                 <!-- Inside the list group in the left sidebar -->

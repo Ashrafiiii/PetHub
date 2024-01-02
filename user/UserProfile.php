@@ -49,7 +49,12 @@ if ($result && mysqli_num_rows($result) > 0) {
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body text-center">
-                    
+                <lable> 
+                    <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item"><a href="UserDashboard.php"><i class="fa fa-calendar"></i> Go to User Dashboard </a></li> 
+                    </ul>  
+                    </lable>
                     <img src="<?php echo $userProfilePicture; ?>" alt="Profile Picture" class="rounded-circle img-fluid">
                     <h1 class="mt-3"><?php echo $f_name; ?></h1>
                     

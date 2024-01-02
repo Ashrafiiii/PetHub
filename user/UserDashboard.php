@@ -174,6 +174,34 @@ a:hover{
   color: gray;
   cursor: pointer;
 }
+
+.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 .course-box ul .active{
   color: #000;
   border-bottom: 1px solid #000;
@@ -218,6 +246,7 @@ a:hover{
 .js{
   color: rgb(28, 98, 179);
 }
+
   
 </style>
 <body>
@@ -225,8 +254,8 @@ a:hover{
     <nav>
       <ul>
         <li><a href="#" class="logo">
-          <img src="<?php echo $pic; ?>" alt="PetHub">//logo not working
-          <span class="nav-item">DashBoard</span>
+        <img src="/PetHub/user/images/PetHub.jpeg" alt="PetHub">
+          <span class="nav-item">PetHub</span>
         </a></li>
         <li><a href="#">
           <i class="fas fa-home"></i>
@@ -236,11 +265,19 @@ a:hover{
           <i class="fas fa-user"></i>
           <span class="nav-item">Profile</span>
         </a></li>
-        <li><a href="">
-          <i class="fas fa-wallet"></i>
-          <span class="nav-item">Track Health</span>
-        </a></li>
-        <li><a href="">
+        <li>
+  <div class="dropdown">
+    <a href="#" class="dropbtn">
+      <i class="fas fa-wallet"></i>
+      <span class="nav-item">Book an Appointment</span>
+    </a>
+    <div class="dropdown-content">
+      <a href="clinical.php">Clinical Consultation</a>
+      <a href="virtual.php">Virtual Consultation</a>
+    </div>
+  </div>
+</li>
+
           <i class="fas fa-chart-bar"></i>
           <span class="nav-item">Emergency Support</span>
         </a></li>
