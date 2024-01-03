@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $vaccinationStatus = $pet['vaccination_status'];
 
         // Insert appointment information into the appointments table
-        $insertQuery = "INSERT INTO clinical_appointments (u_id, p_id, appointment_date, country, state, town_village, pin, pet_name, age, gender, species, breed, weight, medical_history, vaccination_status, v_id) 
+        $insertQuery = "INSERT INTO virtual_appointments (u_id, p_id, appointment_date, country, state, town_village, pin, pet_name, age, gender, species, breed, weight, medical_history, vaccination_status, v_id) 
                         VALUES ('$userId', '{$pet['p_id']}', '$appointmentDate', '$country', '$state', '$townVillage', '$pin', '$petName', '$age', '$gender', '$species', '$breed', '$weight', '$medicalHistory', '$vaccinationStatus', '$vetId')";
 
         $insertResult = mysqli_query($con, $insertQuery);
