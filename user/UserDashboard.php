@@ -1,16 +1,18 @@
 <?php
+include 'connect.php';
+error_reporting();
 session_start(); // Start the session
 
 // Check if the session variable is set
-if(isset($_SESSION['phone_no'])){
-  include"connect.php";
+if (isset($_SESSION['phone_no'])) {
+    include "connect.php";
     $phone_no = $_SESSION['phone_no'];
-   $q="SELECT * FROM user WHERE phone_no='$phone_no'";
+    $q = "SELECT * FROM users WHERE phone_no='$phone_no'";
 
-   $data=mysqli_query($con,$q);
+    $data = mysqli_query($con, $q);
 
-   $row=mysqli_fetch_assoc($data);
-   $pic=$row['profile_picture'];
+    // Check if the query was successful
+   
 }
 ?>
 

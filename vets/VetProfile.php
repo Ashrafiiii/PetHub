@@ -56,7 +56,7 @@ if(isset($_SESSION['phone_no'])){
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item active"><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                    <li class="list-group-item"><a href="#"><i class="fa fa-calendar"></i> View Appointments<span class="badge badge-warning float-right"></span></a></li>
+                    <li class="list-group-item"><a href="appointments.php"><i class="fa fa-calendar"></i> View Appointments<span class="badge badge-warning float-right"></span></a></li>
                     <li class="list-group-item"><a href="#"><i class="fa fa-edit"></i> Edit profile</a></li>
                 </ul>
             </div>
