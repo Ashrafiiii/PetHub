@@ -64,6 +64,35 @@ if ($result && mysqli_num_rows($result) > 0) {
     <li class="list-group-item active"><a href="#"><i class="fa fa-user"></i> Profile</a></li>
     <li class="list-group-item"><a href="RegisterPets.php"><i class="fa fa-calendar"></i> Add Pet Data <span class="badge badge-warning float-right">9</span></a></li>
     <li class="list-group-item"><a href="ProfilePet.php"><i class="fa fa-edit"></i> Pet Profile </a></li>
+
+    <div class="card mb-4">
+    <div class="card-body">
+        <h3>Virtual Appointments</h3>
+        <?php
+            $virtualQuery = "SELECT * FROM virtual_notif WHERE u_id = '$user_id'";
+            $virtualResult = mysqli_query($con, $virtualQuery);
+
+            while ($virtual = mysqli_fetch_assoc($virtualResult)) {
+                echo "<p>Virtual Appoint: {$virtual['message']}</p>";
+            }
+        ?>
+    </div>
+</div>
+
+<!-- Display Clinical Appointments -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>Clinical Appointments</h3>
+        <?php
+            $clinicalQuery = "SELECT * FROM clinical_notif WHERE u_id = '$user_id'";
+            $clinicalResult = mysqli_query($con, $clinicalQuery);
+
+            while ($clinical = mysqli_fetch_assoc($clinicalResult)) {
+                echo "<p>Clinical Appoint: {$clinical['message']}</p>";
+            }
+        ?>
+    </div>
+</div>
 </ul>
 
             </div>
